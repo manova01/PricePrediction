@@ -1,5 +1,5 @@
 import sys
-import logging
+from src.logger import logging
 
 def error_message_detail(error, error_detail: sys) -> str:
     """Generate a detailed error message."""
@@ -19,10 +19,3 @@ class CustomException(Exception):
     def __str__(self):
         return self.error_message
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
-    try:
-        a = 1 / 0
-    except Exception as e:
-        logging.error("Divide by zero error")
-        raise CustomException(str(e), sys) from e
